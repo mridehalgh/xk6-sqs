@@ -12,20 +12,18 @@ To build a `k6` binary with this extension, first ensure you have the prerequisi
 - [Go toolchain](https://go101.org/article/go-toolchain.html)
 - Git
 
-Then:
+Then, install [xk6](https://github.com/k6io/xk6) and build your custom k6 binary with the Kafka extension:
 
-1. Clone `xk6`:
+1. Install `xk6`:
 
   ```shell
-  git clone https://github.com/k6io/xk6.git
-  cd xk6
+  $ go get -u github.com/k6io/xk6/cmd/xk6
   ```
 
 2. Build the binary:
 
   ```shell
-  CGO_ENABLED=1 go run ./cmd/xk6/main.go build master \
-    --with github.com/mridehalgh/xk6-sqs
+  $ xk6 build v0.31.0 --with github.com/mridehalgh/xk6-sqs
   ```
 
 ## AWS credentials
