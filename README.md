@@ -12,7 +12,7 @@ To build a `k6` binary with this extension, first ensure you have the prerequisi
 - [Go toolchain](https://go101.org/article/go-toolchain.html)
 - Git
 
-Then, install [xk6](https://github.com/k6io/xk6) and build your custom k6 binary with the Kafka extension:
+Then, install [xk6](https://github.com/k6io/xk6) and build your custom k6 binary with the SQS extension:
 
 1. Install `xk6`:
 
