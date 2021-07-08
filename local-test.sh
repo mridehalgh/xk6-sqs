@@ -7,7 +7,8 @@ fi
 
 export AWS_ACCESS_KEY_ID=foo
 export AWS_SECRET_ACCESS_KEY=bar
-export AWS_REGION=eu-west-1 AWS_ENDPOINT=http://localhost:4566
+export AWS_REGION=eu-west-1
+export AWS_ENDPOINT=http://localhost:4566
 
 QUEUE_NAME=dummy-k6-queue
 
