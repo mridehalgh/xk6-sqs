@@ -12,4 +12,4 @@ go install github.com/k6io/xk6/cmd/xk6@latest
 xk6 build \
     --with github.com/mridehalgh/xk6-sqs@latest=.
 
-AWS_ENDPOINT=http://localhost:4566 ./k6 run example/localstack.js
+AWS_ACCESS_KEY_ID=foo AWS_SECRET_ACCESS_KEY=bar AWS_REGION=eu-west-1 AWS_ENDPOINT=http://localhost:4566 ./k6 run example/localstack.js
