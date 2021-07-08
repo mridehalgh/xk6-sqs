@@ -1,0 +1,31 @@
+on:
+  push
+
+name: Build and Test
+
+jobs:
+  build_and_test:
+    name: Build and Test
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      AWS_REGION: eu-west-1
+
+    services:
+      localstack:
+        image: localstack/localstack@0.12.14
+        env:
+          SERVICES: sqs
+          DEFAULT_REGION: eu-west-1
+          DATA_DIR: /tmp/localstack/data
+        ports:
+          - 4566:4566
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup go
+        uses: actions/setup-go@v1
+        with:
+          go-version: '1.16'
+      - name: Run smoke test
+        run: ./local-test.sh
