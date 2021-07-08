@@ -13,7 +13,7 @@ jobs:
 
     services:
       localstack:
-        image: localstack/localstack@0.12.14
+        image: localstack/localstack:0.12.14
         env:
           SERVICES: sqs
           DEFAULT_REGION: eu-west-1
