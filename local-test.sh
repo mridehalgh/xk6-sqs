@@ -10,15 +10,15 @@ export AWS_SECRET_ACCESS_KEY=bar
 export AWS_REGION=eu-west-1
 export AWS_ENDPOINT=http://localhost:4566
 
+go install github.com/k6io/xk6/cmd/xk6@latest
+xk6 build \
+    --with github.com/mridehalgh/xk6-sqs@latest=.
+
 QUEUE_NAME=dummy-k6-queue
 
 timeout 22 sh -c 'until aws --endpoint-url=http://localhost:4566 sqs list-queues; do sleep 0.1 && echo "Sleeping"; done'
 QUEUE_URL=$(aws --endpoint-url=http://localhost:4566 sqs create-queue --queue-name $QUEUE_NAME | jq -r '.QueueUrl')
 aws --endpoint-url=http://localhost:4566 sqs purge-queue --queue-url $QUEUE_URL
-
-go install github.com/k6io/xk6/cmd/xk6@latest
-xk6 build \
-    --with github.com/mridehalgh/xk6-sqs@latest=.
 
 ./k6 run example/localstack.js
 
