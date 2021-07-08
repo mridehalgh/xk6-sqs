@@ -30,4 +30,4 @@ JSON=$(aws --endpoint-url=http://localhost:4566 \
     --queue-url $QUEUE_URL) \
     || die "failed to receive-message from SQS queue '$QUEUE_NAME'"
 
-test $(echo $JSON | jq '.Messages | length' ) -eq 1 && echo "PASS" || echo "FAIL" && exit 1
+test $(echo $JSON | jq '.Messages | length' ) -eq 1 && echo "PASS"
