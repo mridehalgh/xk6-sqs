@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-if [ -n "${GITHUB_RUN_ID-unset}" ]; then
+if [ -z ${GITHUB_RUN_ID+x} ]; then
   docker-compose -f example/docker-compose.yml up -d localstack
 fi
 
